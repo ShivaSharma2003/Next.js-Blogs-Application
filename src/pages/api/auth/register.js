@@ -9,7 +9,7 @@ const registerUser = async (req, res) => {
         if (existUser) {
             return res.status(400).json({ errorMessage: "User Already Exist" })
         }
-        const user = await UserSchema(
+        const user = await new UserSchema(
             {
                 userName: userName,
                 email: email,

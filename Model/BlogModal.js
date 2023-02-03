@@ -9,7 +9,12 @@ const BlogSchema = mongoose.Schema({
     description:
     {
         type: String,
-        required: string,
+        required: true,
+    },
+    content:
+    {
+        type: String,
+        required: true
     },
     image:
     {
@@ -18,25 +23,27 @@ const BlogSchema = mongoose.Schema({
     },
     userId:
     {
-        type: [mongoose.Types.ObjectId],
+        type: String,
         required: true,
+        immutable : true,
     },
     comments:
     {
-        type: [mongoose.Types.ObjectId],
+        type: [],
     },
     likes:
     {
-        type: [mongoose.Types.ObjectId],
+        type: [],
     },
     dislikes:
     {
-        type: [mongoose.Types.ObjectId],
+        type: [],
     }
 },
     {
         timestamps: true
     })
 
+mongoose.models = {}
 const Blog = mongoose.model('Blog', BlogSchema)
 export default Blog;
