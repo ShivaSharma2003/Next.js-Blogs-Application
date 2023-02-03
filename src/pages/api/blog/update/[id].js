@@ -12,7 +12,7 @@ const UpdateBlog = expressAsyncHandler(async (req, res) => {
             const blog = await BlogSchema.findById(id)
             if (blog) {
                 if (blog.userId === req.user) {
-                    await BlogSchema.updateOne({ _id: id }, { title: title, description: description, image: image, content: content })
+                    await blog.updateOne({ title: title, description: description, image: image, content: content })
                     res.status(200).json({ Message: "Successfully Updated" })
                 } else {
                     res.status(403).json({ errorMessage: "Not Authorized" })
@@ -21,7 +21,7 @@ const UpdateBlog = expressAsyncHandler(async (req, res) => {
                 res.status(404).json({ errorMessage: "Blog Not Found" })
             }
         } catch (error) {
-            res.status(500).json({ errorMessage: "Internal Server Error" , error : error.message })
+            res.status(500).json({ errorMessage: "Internal Server Error", error: error.message })
         }
 
     } else {
