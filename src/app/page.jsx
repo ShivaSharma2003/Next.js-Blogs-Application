@@ -1,9 +1,10 @@
 "use client";
+
 import "./globals.css";
 import Blog from "Components/Blog";
 import Sidebar from "Components/Sidebar";
 
-export default function Page() {
+export default function page() {
   const arr = [6, 6, 6, 6, 6, 6, 6, 6, 6];
   return (
     <>
