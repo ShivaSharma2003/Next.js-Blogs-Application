@@ -1,10 +1,13 @@
 "use client";
-
 import "./globals.css";
+import React, { useEffect } from "react";
 import Blog from "Components/Blog";
 import Sidebar from "Components/Sidebar";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function page() {
+export default function Home() {
+  const dispatch = useDispatch();
+
   const arr = [6, 6, 6, 6, 6, 6, 6, 6, 6];
   return (
     <>
