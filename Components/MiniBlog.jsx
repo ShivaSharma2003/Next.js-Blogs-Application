@@ -1,10 +1,9 @@
-"use Client";
+"use client";
 import React from "react";
 import Image from "next/image";
-import Image1 from "../public/Image1.png";
 import Avatar1 from "../public/Avatar1.jpg";
 
-const MiniBlog = () => {
+const MiniBlog = ({ popularBlogs }) => {
   return (
     <div className="w-[100%] px-2 flex flex-row justify-between cursor-pointer ">
       <div className="flex flex-col w-[60%] items-start justify-start gap-1">
@@ -19,25 +18,24 @@ const MiniBlog = () => {
         <hr />
         <div className="w-full">
           <p className="text-black/75 font-bold text-sm text-start w-full ">
-            Lorem ipsum dolor sit amet consectetur
+            {popularBlogs.title}
           </p>
         </div>
         <hr />
         <div className="w-full">
-          <p className="text-black/60 text-xs font-bold truncate flex-wrap w-full">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem odit,
-            veritatis temporibus nesciunt aperiam praesentium voluptas
-            consequatur nulla recusandae quasi ad repellendus, non vitae dicta
-            laborum ea ullam, exercitationem ab?
+          <p className="text-black/60 text-xs font-bold h-[50px] text-ellipsis w-full">
+            {popularBlogs.description}
           </p>
         </div>
         <hr />
       </div>
       <div className="w-[40%] h-[7rem]">
         <Image
-          src={Image1}
+          src={popularBlogs.image}
           alt="BLog"
           className="w-full h-full object-fill"
+          width={100}
+          height={100}
         ></Image>
       </div>
     </div>

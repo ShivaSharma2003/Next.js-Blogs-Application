@@ -1,81 +1,91 @@
 import React from "react";
-import Image from "next/image";
-import Image1 from "../public/Image1.png";
-import Avatar1 from "../public/Avatar1.jpg";
+import Avatar from "../public/Avatar.jpg";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import Image from "next/image";
 
-const Blog = () => {
+const Blog = ({ blogs }) => {
+  console.log(blogs);
   return (
     <div className="w-[100%] grid grid-cols-12 p-4 gap-2 ">
-      <div className="col-span-2 w-[100%] flex items-start justify-center">
-        <Image
-          src={Avatar1}
-          alt="Avatar"
-          className="h-10 w-10 md:w-14 md:h-14 rounded-full cursor-pointer"
-        />
+      <div className="col-span-2 w-[100%] items-start justify-center hidden sm:flex">
+        {blogs[1].user.Avatar ? (
+          <Image
+            src={blogs[1].user.Avatar}
+            alt="Avatar"
+            className="h-8 w-8 md:w-12 md:h-12 rounded-full cursor-pointer"
+            width={100}
+          />
+        ) : (
+          <Image
+            src={Avatar}
+            alt="Avatar"
+            className="h-8 w-8 md:w-12 md:h-12 rounded-full cursor-pointer"
+            width={100}
+          />
+        )}
       </div>
-      <div className="col-span-10 flex flex-col items-center justify-start gap-4 ">
+      <div className="col-span-12 sm:col-span-10 flex flex-col items-center justify-start gap-4 ">
         <div className="flex flex-col items-start justify-start w-[100%]">
           <h3 className="font-bold text-black text-lg text-justify">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit rem
+            {blogs[0].title}
           </h3>
         </div>
         <div className="flex flex-col items-center justify-center w-[100%]">
-          <h3 className="text-black/50 text-sm ">
-            Lorem, ipsum dolor Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. A saepe enim eaque sapiente suscipit nulla labore,
-            consequatur maiores fugit ullam quas earum omnis consectetur ipsum
-            magnam nobis repellat tempore minus.
-          </h3>
+          <h3 className="text-black/50 text-sm ">{blogs[0].description}</h3>
         </div>
         <div className="w-[100%] h-[15rem]">
-          <Image
-            src={Image1}
-            alt="Blog"
-            className="w-full h-full object-fill"
-          />
+          {blogs[0].image.map((item) => (
+            <>
+              <Image
+                src={item}
+                alt="Blog"
+                className="w-full h-full object-fill"
+                width={100}
+                height={100}
+              />
+            </>
+          ))}
         </div>
         <div className="flex items-center justify-center w-[100%]">
-          <p className="text-sm text-justify">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eum
-            quas expedita! Aliquid obcaecati velit, fuga sed saepe enim nisi
-            necessitatibus, porro dolores earum sunt accusamus explicabo. Rem
-            unde consequuntur autem mollitia! Velit, dolores? Culpa illo
-            veritatis ea assumenda laudantium! Maiores optio similique, odit qui
-            voluptate sint nemo accusamus quidem illum quae aspernatur tenetur
-            ipsa magni voluptas harum dicta provident doloremque repudiandae
-            laudantium in. Sapiente exercitationem soluta reprehenderit quis
-            quam ex odit inventore atque dicta laboriosam sequi hic rem nihil
-            nam, error accusantium deserunt nesciunt earum enim consectetur
-            amet. Itaque repellendus esse voluptatem asperiores quis adipisci!
-            Quo facilis sequi minus!
-          </p>
+          <p className="text-sm text-justify">{blogs[0].content}</p>
         </div>
         <div className="grid grid-cols-12 w-[100%] px-4 ">
           <div className="col-span-6 flex flex-row gap-4 items-center justify-start">
             <div className="flex flex-col items-center justify-center cursor-pointer ">
               <FaThumbsUp className="hover:text-blue-700 " />
               <h6 className="text-xs hover:text-blue-700 text-black/50 font-bold">
-                Like
+                {blogs[0].likes.length}
               </h6>
             </div>
             <div className="flex flex-col items-center justify-center cursor-pointer">
               <FaThumbsDown className="hover:text-red-700 " />
               <h6 className="text-xs hover:text-red-700 text-black/50 font-bold">
-                Dislike
+                {blogs[0].dislikes?.length}
               </h6>
             </div>
           </div>
           <div className="col-span-6 flex flex-row gap-4 ">
             <div>
-              <Image
-                src={Avatar1}
-                alt="Avatar"
-                className="h-8 w-8 md:w-12 md:h-12 rounded-full cursor-pointer"
-              />
+              {blogs[1].user.Avatar ? (
+                <Image
+                  src={blogs[1].user.Avatar}
+                  alt="Avatar"
+                  className="h-8 w-8 md:w-12 md:h-12 rounded-full cursor-pointer"
+                  width={100}
+                />
+              ) : (
+                <Image
+                  src={Avatar}
+                  alt="Avatar"
+                  className="h-8 w-8 md:w-12 md:h-12 rounded-full cursor-pointer"
+                  width={100}
+                />
+              )}
             </div>
             <div className="flex flex-col items-start justify-start ">
-              <h4 className="text-sm text-black/70 font-bold ">Jasmin Josef</h4>
+              <h4 className="text-sm text-black/70 font-bold ">
+                {blogs[1].user.userName}
+              </h4>
               <h6 className="text-xs text-black/50 font-bold">
                 Professional Traveller
               </h6>

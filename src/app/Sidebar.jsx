@@ -1,6 +1,5 @@
-"use client";
 import SearchBar from "Components/SearchBar";
-import Category from "Components/Category";
+import Category from "@/app/Category";
 import React from "react";
 import PopularBlogs from "./PopularBlogs";
 
